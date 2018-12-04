@@ -1,0 +1,7 @@
+# lib
+/venv
+/.idea
+
+# test file
+/test
+
