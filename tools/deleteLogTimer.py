@@ -7,7 +7,9 @@ import sys
 #删除多少天前的文件，不删除目录，path是文件的目录，day是删除多少天前的文件
 
 path=str(sys.argv[1])
+#第一个输入的参数是目录，如：/root/web/web
 day=int(sys.argv[2])
+#第二个输入的参数需要删除多少天前的文件   如：7
 
 def reTest(path,day):
     cmd = "ls -lt --time-style '+%s'" + ' ' + path
@@ -40,7 +42,7 @@ def deleteFile(path):
 
 # deleteFile(path)
 
-notAllowDir = ['','/proc','/']
+notAllowDir = ['','/proc','/','/bin','/usr/bin','/lib']
 if path.strip() in notAllowDir :
     print('输入的参数不能为空！！！,或者不能是{a}目录,有删除系统文件的风险！！'.format(a = path.strip()))
     sys.exit(1)
