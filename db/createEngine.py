@@ -8,4 +8,11 @@ def getEngine():
     engine =create_engine(connect,encoding="utf-8")
     return engine
 
+engine = getEngine()
+metadata = MetaData(engine)
 
+__all__ = ['engine','metadata']
+
+def __init__(self):
+    self.metadata = metadata
+    self.engine = engine
