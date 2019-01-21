@@ -1,6 +1,6 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import (Table, Column, INTEGER, String, Text, TIMESTAMP, DateTime, func)
-from .createEngine import metadata,engine
+from db import metadata,session
 
 
 user = Table(
@@ -16,4 +16,12 @@ color = Table(
 )
 
 
-metadata.create_all()
+session.add_all([
+    user(id=3, name='sbyao'),
+    user(id=4, name='liuyao'),
+    user(id=5, name='mayun')
+])
+
+# print(type(user))
+
+session.commit()
