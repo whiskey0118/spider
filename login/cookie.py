@@ -99,5 +99,5 @@ def weiboLoginTest():
     print(respone.text)
 
 
-# weiboLogin()
-weiboLoginTest()
+weiboLogin()
+# weiboLoginTest()

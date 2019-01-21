@@ -16,12 +16,3 @@ color = Table(
 )
 
 
-session.add_all([
-    user(id=3, name='sbyao'),
-    user(id=4, name='liuyao'),
-    user(id=5, name='mayun')
-])
-
-# print(type(user))
-
-session.commit()
