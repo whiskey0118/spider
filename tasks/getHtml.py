@@ -28,9 +28,11 @@ def getComment(url):
     return result
 
 def parseComment(url):
+    # with open('test.txt', 'r',encoding='utf-8') as f:
+    #     cont = f.read()
     cont = json.dumps(getComment(url), ensure_ascii=False)
     page = BeautifulSoup(cont,"lxml")
     comment = page.find(attrs={'node-type': 'comment_list'})
-    return page.p
+    return page
 
 print(parseComment(url))
