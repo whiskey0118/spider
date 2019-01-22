@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta charset="UTF-8"/>
+    <!-- 默认极速模式 -->
+    <meta name="renderer" content="webkit"/>
+    <!-- IE文档渲染模式默认edge -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <title></title>
+    <!--<link rel="stylesheet" th:href="@{css/layout.css}"/>-->
+    <link rel="stylesheet" href="css/base.css;jsessionid=821EBF15FA9509DA47BD3844539B6A85"/>
+    <link rel="stylesheet" href="https://static.zhiyingwl.com/layout/1.0.0/css/layout-1.0.0.css"/>
+    <link rel="stylesheet" href="css/login.css;jsessionid=821EBF15FA9509DA47BD3844539B6A85"/>
+    <script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+    <script src="js/vue.min.js;jsessionid=821EBF15FA9509DA47BD3844539B6A85"></script>
+    <script src="js/axios.min.js;jsessionid=821EBF15FA9509DA47BD3844539B6A85"></script>
+</head>
+<body>
+<div class="wrapper" id="app">
+    
+    <div class="zy-header" :style="headerStyle" id="head_top"><div class="header_box">
+    <!-- 头部logo开始 -->
+    <h1 class="logo">
+        <a href="/">
+            <img id="logo" src=""/>
+        </a>
+    </h1>
+    <!-- 头部logo结束 -->
+</div></div>
+    <!-- header end -->
+    <div class="content clearfix" id="contents">
+        <div class="content_box">
+            <div class="bg_left"></div>
+            <div class="login_popup">
+                <form class="login_popup_f">
+                    <input type="hidden" id="entryType" value="elp"/>
+                    <h3 class="login_t">欢迎登录</h3>
+                    <p class="warning" v-cloak="">{{errorMsg}}</p>
+
+                    
+                    <input type="hidden" id="redirectURL" value="http://www.zhiyingwl.com"/>
+
+                    <div class="input_box">
+                        <input data-test="test-account" ref="username" v-model="loginInfo.username" v-on:keyup.13="submit()"
+                               placeholder="请输入登录手机号"/><em
+                            class="poll"></em>
+                    </div>
+                    <div class="input_box">
+                        <input data-test="test-password" ref="password" type="password" v-model="loginInfo.password" v-on:keyup.13="submit()"
+                               placeholder="密码"
+                               autocomplete="off"/><em class="lock"></em>
+                    </div>
+                    
+                    <div class="input_box valid" id="valid-div">
+                        <input ref="validCode" class="i_code_input" v-model="loginInfo.validCode"
+                               v-on:keyup.13="submit()"
+                               placeholder="请输入验证码"/>
+
+                        <div class="i_code"><img alt="验证码" title="点击我刷新" :src="validImg" v-on:click="refreshValidCode()"
+                                                 class="i_code_img"/><em v-on:click="refreshValidCode()"></em></div>
+                    </div>
+                    <div class="input_box text">
+                    <span class="auto_login_box">
+                        <input class="auto_login" id="autoLogin" v-model="loginInfo.autoLogin" type="checkbox"/>
+                        <label for="autoLogin">下次自动登录</label>
+                    </span>
+                        <span class="incase">
+                        <a class="pwd_forget"
+                           href="/elp/user/forgetPassword/findPassword">忘记密码</a><i>|</i><a
+                                class="reg_now"
+                                href="/Register/register">立即注册</a>
+                    </span>
+                    </div>
+                    <div class="btn_box">
+                        <button class="login_btn" type="button" v-cloak="" v-on:click="submit()">
+                            {{login?'登录中...':'登录'}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer start -->
+    
+    <script src="https://resource.zhiyingwl.com/js/components/footer-1.1.js"></script>
+    <!-- footer end -->
+</div>
+<script src="js/encrypt.min.js;jsessionid=821EBF15FA9509DA47BD3844539B6A85"></script>
+<script src="js/md5.js;jsessionid=821EBF15FA9509DA47BD3844539B6A85"></script>
+<script src="js/login.js;jsessionid=821EBF15FA9509DA47BD3844539B6A85?v=1.0"></script>
+<script type="text/javascript" src="https://resource.zhiyingwl.com/static/browser/js/version.js"></script>
+</body>
+</html>

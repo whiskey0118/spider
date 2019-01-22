@@ -1,0 +1,22 @@
+1548124350100	mozrunner::runner	INFO	Running command: "G:\\firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\whiskey\\AppData\\Local\\Temp\\rust_mozprofile.5kLu3ZY4Xo59"
+1548124350905	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1548124350905	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1548124352151	Marionette	INFO	Listening on port 53471
+1548124352257	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://js2.t.sinajs.cn/t6/webim_prime/js/common/all.js?version=201901221032, line 1: unreachable code after return statement
+JavaScript warning: https://js2.t.sinajs.cn/t6/webim_prime/js/common/all.js?version=201901221032, line 1: unreachable code after return statement
+JavaScript warning: https://js2.t.sinajs.cn/t6/webim_prime/js/common/all.js?version=201901221032, line 1: unreachable code after return statement
+JavaScript warning: https://js2.t.sinajs.cn/t6/webim_prime/js/common/all.js?version=201901221032, line 1: unreachable code after return statement
+1548124384344	Marionette	INFO	Stopped listening on port 53471
+[Child 150484, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 150484, Chrome_ChildThread] WARNING: pipe[Parent 160520, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+JavaScript error: https://js2.t.sinajs.cn/t6/webim_prime/js/common/all.js?version=201901221032, line 1: NS_ERROR_NOT_INITIALIZED: 
+[Child 16048, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_ch
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+annel_win.cc, line 346
+[Child 16048, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/sr[Parent 160520, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 151108, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 151108, Ch[G
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
