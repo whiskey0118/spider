@@ -5,7 +5,7 @@ import requests
 import json
 from selenium import webdriver
 import time
-from lxml import etree
+import os
 
 
 def saveCookie():
@@ -71,37 +71,13 @@ def weiboLogin():
         json.dump(cookie,f)
     return json.dumps(cookie)
 
+def cookies():
+    file = os.path.join(os.path.dirname(__file__),'weiboCookie.txt')
+    with open(file,'r+') as f:
+        cookies=json.load(f)
+    return cookies
 
-
-def weiboLoginTest():
-    # url = "https://weibo.com/"
-    url = "http://weibo.com/aj/v6/comment/big?ajwvr=6&id=4326281913538131&page=1"
-    header = {
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-        "Connection": "keep-alive",
-        "Host": "account.weibo.com",
-        "Referer": "https://weibo.com/",
-        "Upgrade-Insecure-Requests": "1",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36"
-    }
-    cookie = RequestsCookieJar
-    cookieDict = dict()
-
-    with open("weiboCookie.txt",'r') as f:
-        cookies = json.load(f)
-        for i in cookies:
-            cookieDict[i["name"]] = i["value"]
-
-    # cookies = json.loads(weiboLogin())
-    # for i in cookies:
-    #     cookieDict[i["name"]] = i["value"]
-
-    respone = requests.get(url,cookies = cookieDict,headers = header)
-    respone.encoding='utf-8'
-    print(respone.text)
+cookieList = cookies()
 
 
 # weiboLogin()
-weiboLoginTest()

@@ -1,9 +1,4 @@
-from db import session
-from db import User,Color
+import os
 
-def test():
-    new = User(id=1, name="test")
-    session.add(new)
-    session.commit()
-
-test()
+a = "<!-- root_comment_id\u4e3a\u4e86\u5224\u65ad\u4e00\u7ea7\u8bc4\u8bba\u8fd8\u662f\u4e8c\u7ea7\u8bc4\u8bba\uff0c\u589e\u52a0dom\u8868\u793a\u7528\u4e8e\u524d\u7aef\u9012\u5f52\u67e5\u627e\u8282\u70b9 -->"
+print(a)
