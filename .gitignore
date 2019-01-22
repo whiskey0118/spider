@@ -3,9 +3,9 @@
 /.idea
 
 # test file
-/test
-/*test*
-/*Test*
+#/test
+#/*test*
+#/*Test*
 
 #config
 /config

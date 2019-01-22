@@ -9,6 +9,7 @@ from lxml import etree
 
 
 def saveCookie():
+    #职赢未来登录测试
     url = "https://www.zhiyingwl.com/lcs/#/study/course"
     header = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0",
@@ -31,6 +32,7 @@ def saveCookie():
 
 
 def seleniumCookieTest():
+    #测试登录后获取页面
     url = "https://www.zhiyingwl.com/lcs/#/study/homework"
     header = {
         "Host": "www.zhiyingwl.com",
@@ -53,6 +55,7 @@ def seleniumCookieTest():
     print(respone.text)
 
 def weiboLogin():
+    #用selenium获取cookies保存到文件
     url = "https://weibo.com/login"
     url2 = "https://weibo.com/6460703487/profile?topnav=1&wvr=6&is_all=1"
     driver = webdriver.Firefox()
@@ -71,14 +74,15 @@ def weiboLogin():
 
 
 def weiboLoginTest():
-    url = "https://weibo.com/u/6460703487/home"
+    # url = "https://weibo.com/"
+    url = "http://weibo.com/aj/v6/comment/big?ajwvr=6&id=4326281913538131&page=1"
     header = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
         "Accept-Encoding": "gzip, deflate, br",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
         "Connection": "keep-alive",
         "Host": "account.weibo.com",
-        "Referer": "https://weibo.com/6460703487/profile?topnav=1&wvr=6&is_all=1",
+        "Referer": "https://weibo.com/",
         "Upgrade-Insecure-Requests": "1",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36"
     }
@@ -99,5 +103,5 @@ def weiboLoginTest():
     print(respone.text)
 
 
-weiboLogin()
-# weiboLoginTest()
+# weiboLogin()
+weiboLoginTest()
