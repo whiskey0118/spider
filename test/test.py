@@ -1,4 +1,7 @@
 import os
 
-print(__file__)
-print(os.path.dirname(__file__))
+a=''
+if a:
+    print("yes")
+else:
+    print("no")

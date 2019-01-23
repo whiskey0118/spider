@@ -25,14 +25,31 @@ def getComment(url):
 
     respone = requests.get(url,cookies = cookieDict,headers = header)
     result = respone.json().get('data')
-    return result
+    cont = result.get('html','')
+    return cont
 
 def parseComment(url):
     # with open('test.txt', 'r',encoding='utf-8') as f:
     #     cont = f.read()
-    cont = json.dumps(getComment(url), ensure_ascii=False)
-    page = BeautifulSoup(cont,"lxml")
-    comment = page.find(attrs={'node-type': 'comment_list'})
-    return page
+    # cont = json.dumps(getComment(url), ensure_ascii=False)
+    cont = getComment(url)
+    soup = BeautifulSoup(cont,"lxml")
+    # comment = page.find(attrs={"class": "WB_text"}).contents
+    comment = soup.find(attrs={'node-type': 'comment_list'}).find_all(attrs={'class': 'list_li S_line1 clearfix'})
+    return comment
 
-print(parseComment(url))
+# print(parseComment(url)[1])
+# print(type(parseComment(url)))
+
+# print(getComment(url))
+# print(type(getComment(url)))
+
+print(parseComment(url)[2].find(attrs={'class': 'WB_text'}).find('a').text)
+for content in parseComment(url)[2].find(attrs={'class': 'WB_text'}).contents:
+    first_colon = True
+    if first_colon:
+        if content.find('：') == 0:
+            print(content.replace('：', '', 1))
+            first_colon = False
+    else:
+        print(content)
