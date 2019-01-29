@@ -1,7 +1,7 @@
 import requests
 from login import cookieList
 from bs4 import BeautifulSoup
-import json
+from login import cookie
 
 url = "http://weibo.com/aj/v6/comment/big?ajwvr=6&id=4306001882880094&page=1"
 # url = "https://weibo.com/u/6460703487"
@@ -24,9 +24,17 @@ def getComment(url):
         cookieDict[i["name"]] = i["value"]
 
     respone = requests.get(url,cookies = cookieDict,headers = header)
-    result = respone.json().get('data')
-    cont = result.get('html','')
-    return cont
+    # return  respone.status_code
+    if respone.status_code == 404:
+        cookie.weiboLogin()
+        result = respone.json().get('data')
+        cont = result.get('html', '')
+        return cont
+    else:
+        result = respone.json().get('data')
+        cont = result.get('html','')
+        return cont
+
 
 def parseComment(url):
     #获取每个回复的div，返回评论数组
@@ -59,7 +67,7 @@ def test():
         #     print(content)
 
 
-def test2():
+def test2(url):
     comment_list = list()
     for comment in parseComment(url):
         try:
@@ -93,5 +101,3 @@ def test2():
             print('解析评论失败，具体信息是{}'.format(e))
         else:
             print("error")
-
-test2()

@@ -58,7 +58,7 @@ def weiboLogin():
     #用selenium获取cookies保存到文件
     url = "https://weibo.com/login"
     url2 = "https://weibo.com/6460703487/profile?topnav=1&wvr=6&is_all=1"
-    driver = webdriver.Firefox()
+    driver = webdriver.Firefox(executable_path="login/geckodriver")
     driver.get(url)
     driver.find_element_by_xpath('//input[@id="loginname"]').send_keys("whiskey0118@sina.com")
     driver.find_element_by_xpath('//input[@type="password"]').send_keys("Maozedong@123")
@@ -67,16 +67,16 @@ def weiboLogin():
     driver.get(url=url2)
     cookie = driver.get_cookies()
     driver.close()
-    with open("weiboCookie.txt",'w+') as f:
+    with open("login/weiboCookie.txt",'w+') as f:
         json.dump(cookie,f)
     return json.dumps(cookie)
 
 def cookies():
-    file = os.path.join(os.path.dirname(__file__),'weiboCookie.txt')
-    with open(file,'r+') as f:
+    with open("login/weiboCookie.txt",'r+') as f:
         cookies=json.load(f)
     return cookies
 
+# cookieList = ''
 cookieList = cookies()
 
 
