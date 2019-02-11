@@ -5,7 +5,9 @@ import requests
 import json
 from selenium import webdriver
 import time
+from selenium.webdriver.chrome.options import Options
 import os
+import platform
 
 
 def saveCookie():
@@ -71,10 +73,47 @@ def weiboLogin():
         json.dump(cookie,f)
     return json.dumps(cookie)
 
+
+def weiboLoginLinux():
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('window-size=1920x3000')
+    chrome_options.add_argument('--hide-scrollbars')
+    chrome_options.add_argument('blink-settings=imagesEnabled=false')
+    chrome_options.binary_location = r"/usr/bin/google-chrome"
+    driver = webdriver.Chrome(executable_path="login/chromedriver", chrome_options=chrome_options)
+    url = "https://weibo.com/login"
+    url2 = "https://weibo.com/6460703487/profile?topnav=1&wvr=6&is_all=1"
+    driver.get(url)
+    driver.find_element_by_xpath('//input[@id="loginname"]').send_keys("whiskey0118@sina.com")
+    driver.find_element_by_xpath('//input[@type="password"]').send_keys("Maozedong@123")
+    driver.find_element_by_xpath('//span[@node-type="submitStates"]').click()
+    time.sleep(10)
+    driver.get(url=url2)
+    cookie = driver.get_cookies()
+    driver.close()
+    with open("login/weiboCookie.txt", 'w+') as f:
+        json.dump(cookie, f)
+    return json.dumps(cookie)
+
+
+
+
 def cookies():
-    with open("login/weiboCookie.txt",'r+') as f:
-        cookies=json.load(f)
-    return cookies
+    if os.path.getsize("login/weiboCookie.txt"):
+        with open("login/weiboCookie.txt",'r+') as f:
+            cookies=json.load(f)
+        return cookies
+    else:
+        if platform.system() == "linux":
+            weiboLoginLinux()
+        else:
+            weiboLogin()
+        with open("login/weiboCookie.txt",'r+') as f:
+            cookies=json.load(f)
+        return cookies
 
 # cookieList = ''
 cookieList = cookies()

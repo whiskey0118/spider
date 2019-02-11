@@ -2,6 +2,7 @@ import requests
 from login import cookieList
 from bs4 import BeautifulSoup
 from login import cookie
+import platform
 
 url = "http://weibo.com/aj/v6/comment/big?ajwvr=6&id=4306001882880094&page=1"
 # url = "https://weibo.com/u/6460703487"
@@ -26,7 +27,10 @@ def getComment(url):
     respone = requests.get(url,cookies = cookieDict,headers = header)
     # return  respone.status_code
     if respone.status_code == 404:
-        cookie.weiboLogin()
+        if platform.system() == "linux":
+            cookie.weiboLoginLinux()
+        else:
+            cookie.weiboLogin()
         result = respone.json().get('data')
         cont = result.get('html', '')
         return cont

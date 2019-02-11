@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 def getEngine():
     conf = getDbconfig()
     connect = "{db_type}+pymysql://{user}:{password}@{host}:{port}/{db_name}".format(db_type = conf["db_type"],user = conf["user"], password = conf["password"],host = conf["host"],port = conf["port"],db_name = conf["db_name"])
-    engine =create_engine(connect,encoding="utf-8")
+    engine =create_engine(connect)
     return engine
 
 engine = getEngine()

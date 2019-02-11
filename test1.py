@@ -1,3 +1,3 @@
-from login import cookie
+from db import metadata,engine,session
 
-cookie.weiboLogin()
+metadata.create_all(engine)
