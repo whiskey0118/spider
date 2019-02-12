@@ -5,7 +5,7 @@ from sqlalchemy import (Table, Column, INTEGER, String, Text, TIMESTAMP, DateTim
 class WeiboComment(Base):
     weibo_comment = Table('weibo_comment', metadata,
                           Column("id", INTEGER, primary_key=True, autoincrement=True),
-                          Column("comment_id", String(50), unique=True),
+                          Column("comment_id", String(50)),
                           Column("comment_cont", Text),
                           Column("comment_screen_name", Text),
                           Column("weibo_id", String(200)),
@@ -18,7 +18,7 @@ class WeiboComment(Base):
 class User(Base):
     wbuser = Table("wbuser", metadata,
                    Column("id", INTEGER, primary_key=True, autoincrement=True),
-                   Column("uid", String(20), unique=True),
+                   Column("uid", String(20)),
                    Column("name", String(200), default='', server_default=''),
                    Column("gender", INTEGER, default=0, server_default='0'),
                    Column("birthday", String(200), default='', server_default=''),
@@ -43,7 +43,7 @@ class User(Base):
 class WeiboData(Base):
     weibo_data = Table('weibo_data', metadata,
                        Column("id", INTEGER, primary_key=True, autoincrement=True),
-                       Column("weibo_id", String(200), unique=True),
+                       Column("weibo_id", String(200)),
                        Column("weibo_cont", Text),
                        Column("weibo_img", String(1000)),
                        Column("weibo_img_path", String(1000), server_default=''),
